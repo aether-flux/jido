@@ -18,7 +18,6 @@ program.command("flow")
   .argument("[flowname]", "Name of the flow to execute")
   .option('-d, --dry-run', 'Preview running the flow', false)
   .action(function (flowname, options) {
-    console.log("options:", options);
     console.log();
     flow(flowname, options.dryRun);
   });

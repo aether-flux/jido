@@ -1,7 +1,7 @@
 {
   "name": "jido",
   "version": "1.0.0",
-  "description": "",
+  "description": "CLI tool for defining and automating workflows.",
   "main": "dist/index.js",
   "bin": {
     "jido": "./dist/cli/main.js"
@@ -11,13 +11,63 @@
     "start": "node dist/cli/main.js",
     "build": "npx tsc"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "jido",
+    "workflow",
+    "cli",
+    "task-runner",
+    "automation",
+    "developer-tools",
+    "devtools",
+    "devtool",
+    "task-automation",
+    "javascript-cli",
+    "js-cli",
+    "node-cli",
+    "typescript",
+    "custom-cli",
+    "flow-runner",
+    "hook-system",
+    "workflow-runner",
+    "shell-automation",
+    "automation-cli",
+    "workflow-cli",
+    "task-cli",
+    "project-automation",
+    "plugin-system",
+    "plugin-support",
+    "jido-cli",
+    "jido-kit",
+    "devx",
+    "dx",
+    "developer-experience",
+    "dev-productivity",
+    "developer-efficiency"
+  ],
+  "author": "Amartya Chowdhury (aether-flux)",
+  "license": "MIT",
   "type": "module",
+  "files": [
+    "dist",
+    "LICENSE.txt",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aether-flux/jido"
+  },
+  "bugs": {
+    "url": "https://github.com/aether-flux/jido/issues"
+  },
+  "homepage": "https://github.com/aether-flux/jido",
+  "funding": {
+    "type": "buymeacoffee",
+    "url": "https://buymeacoffee.com/aetherflux"
+  },
   "dependencies": {
     "chalk": "^5.4.1",
-    "commander": "^13.1.0"
+    "commander": "^13.1.0",
+    "jido-kit": "^1.0.0"
   },
   "devDependencies": {
     "@types/node": "^22.15.17",

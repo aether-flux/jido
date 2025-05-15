@@ -1,17 +1,13 @@
 import chalk from "chalk";
 import { spawn } from "child_process";
+import { Hook, Plugin, Step } from "jido-kit/types";
 
-type HookFn = () => void | Promise<void>;
-
-export const runCommand = (stepConf: any): Promise<void> => {
+export const runCommand = (stepConf: Step): Promise<void> => {
   return new Promise((resolve, reject) => {
     const { run: cmd, onStart, onSuccess, onFailure, plugins } = stepConf;
 
-    let hooks: {
-      onStart: HookFn[];
-      onSuccess: HookFn[];
-      onFailure: HookFn[];
-    } = {
+    let duration: number;
+    let hooks: Record<"onStart" | "onSuccess" | "onFailure", Hook[]> = {
       onStart: [],
       onSuccess: [],
       onFailure: [],
@@ -22,7 +18,7 @@ export const runCommand = (stepConf: any): Promise<void> => {
     if (typeof onFailure === "function") hooks.onFailure.push(onFailure);
 
     if (plugins) {
-      plugins.forEach((p: any) => {
+      plugins.forEach((p: Plugin) => {
         if (typeof p.onStart === "function") hooks.onStart.push(p.onStart);
 
         if (typeof p.onSuccess === "function") hooks.onSuccess.push(p.onSuccess);
@@ -37,35 +33,37 @@ export const runCommand = (stepConf: any): Promise<void> => {
     });
 
     child.on("spawn", () => {
+      duration = Date.now();
       console.log(`${chalk.yellow(">")} ${chalk.yellow(cmd)}\n`);
       
-      if (hooks.onStart) {
-        hooks.onStart.forEach((fn: Function) => {
-          fn();
-          console.log();
-        })
-      }
+      //if (hooks.onStart) {
+      hooks.onStart.forEach((fn: Hook) => {
+        fn();
+        console.log();
+      })
+      //}
     });
 
     child.on("close", (code) => {
+      duration = Date.now() - duration;
+
       if (code === 0) {
-        if (hooks.onSuccess) {
-          hooks.onSuccess.forEach((fn: Function) => {
-            console.log();
-            fn();
-          })
-        }
+        hooks.onSuccess.forEach((fn: Hook) => {
+          console.log();
+          fn();
+        });
+
+        console.log(`\n${chalk.green(`✔ [${duration} ms]`)}`);
         resolve();
       } else {
         console.log();
 
-        if (hooks.onFailure) {
-          hooks.onFailure.forEach((fn: Function) => {
-            fn();
-            console.log();
-          })
-        }
+        hooks.onFailure.forEach((fn: Hook) => {
+          fn();
+          console.log();
+        })
 
+        console.log(`\n${chalk.red(`✖ [${duration} ms]`)}`);
         reject(new Error(`Command "${cmd}" failed with exit code ${code}`));
       }
     });

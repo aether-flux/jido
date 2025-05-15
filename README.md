@@ -4,7 +4,7 @@
 ---
 
 ## What is Jido?
-[**Jido**](https://npmjs.com/packages/jido) is a CLI tool for running named workflows, called *flows*, automating sequences of tasks and improving the developer experience without needing to memorize a bunch of commands or wiring up Makefiles.
+[**Jido**](https://npmjs.com/package/jido) is a CLI tool for running named workflows, called *flows*, automating sequences of tasks and improving the developer experience without needing to memorize a bunch of commands or wiring up Makefiles.
 
 Define your flows in a config file `jido.config.js` in the root directory of your project, and run a specific flow with:
 ```bash

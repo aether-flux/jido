@@ -1,4 +1,6 @@
 # Jido
+<img src="https://github.com/user-attachments/assets/038ca10c-9524-42de-b980-203ee0dc27b6" alt="jido-logo" height="80" />
+
 **Automate your workflows in a flash**
 
 ---

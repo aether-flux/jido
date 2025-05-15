@@ -1,6 +1,6 @@
 {
   "name": "jido",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A CLI tool to automate your development workflows using named flows. Simplifies task automation with readable config and plugin support.",
   "main": "dist/index.js",
   "bin": {

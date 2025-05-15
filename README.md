@@ -28,7 +28,7 @@ Then, you're good to go!
 ## Getting Started
 Run this to initialize a config:
 ```bash
-jido init
+npx jido init
 ```
 It creates a basic `jido.config.js` in your project root.
 <details>
@@ -71,29 +71,29 @@ export default jido(config);
 ### `jido flow [flowname]`
 Runs the named flow as defined in your config:
 ```bash
-jido flow build
+npx jido flow build
 ```
 #### Options:
 - `-d`, `--dry-run`: Preview what the flow would do without actually executing it.
 ```bash
-jido flow build --dry-run
+npx jido flow build --dry-run
 ```
 
 ### `jido list`
 Lists all available flows defined in `jido.config.js`:
 ```bash
-jido list
+npx jido list
 ```
 
 ### `jido init`
 Scaffolds a basic `jido.config.js` in your project root:
 ```bash
-jido init
+npx jido init
 ```
 #### Options:
 - `-f`, `--force`: Overwrite existing `jido.config.js` files, if any.
 ```bash
-jido init --force
+npx jido init --force
 ```
 
 ## Config Format
@@ -218,7 +218,7 @@ You can enable better IntelliSense by adding this at the top of your plugin file
 ## Dry Run Mode
 You can simulate a flow with:
 ```bash
-jido flow build --dry-run
+npx jido flow build --dry-run
 ```
 This prints the commands without executing them. Helpful for debugging.
 
